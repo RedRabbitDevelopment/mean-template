@@ -1,8 +1,11 @@
 <div class="login">
   <h1>Sign in</h1>
   <form ng-submit="login(user)">
-    <input placeholder="username" ng-model="user.username" />
+    <input placeholder="email" ng-model="user.email" />
     <input placeholder="password" ng-model="user.password" type="password" />
     <input type="submit" value="Sign in" />
   </form>
+  <button ng-click="autologin()" ng-show="environment !== 'production'">
+    Auto Login
+  </button>
 </div>

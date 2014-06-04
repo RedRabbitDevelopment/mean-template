@@ -12,6 +12,9 @@ module.exports = BaseController.extend
       User.find().exec()
     getMe: ->
       @request.user
+    logout: ->
+      Auth.logout @request
+      true
     login:
       method: 'post'
       validation:

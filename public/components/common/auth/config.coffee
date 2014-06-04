@@ -6,6 +6,7 @@ angular.module('auth')
     unauthorizedView: 'login'
     loginUrl: '/login'
     meUrl: '/users'
+    authBy: 'email'
     translateResponse: (response)->
       response.data
   this.config = (config)->

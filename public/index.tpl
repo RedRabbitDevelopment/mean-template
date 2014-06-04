@@ -8,6 +8,10 @@
 	</head>
 	<body>
     <header>
+      <div class="greeting" ng-show="auth.user">
+        <p>Hello, {{auth.user.name}}</p>
+        <a href ng-click="logout()">Logout</a>
+      </div>
     </header>
       
     <!-- Feedback module -->
@@ -58,7 +62,9 @@
       </script>
 
     <% } else { %>
-
+      <% libs.forEach(function(lib) { %>
+        <script type="text/javascript" src="<%= lib %>"></script>
+      <% }); %>
       <!-- inject:js -->
       <!-- endinject -->
     <% } %>

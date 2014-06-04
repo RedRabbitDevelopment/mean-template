@@ -11,3 +11,7 @@ angular.module 'meanTemplate'
 .controller 'Login', ($scope, Auth)->
   $scope.login = (user)->
     Auth.login user
+  $scope.autologin = ->
+    $scope.login
+      email: 'sumwierdkid@gmail.com'
+      password: 'password'

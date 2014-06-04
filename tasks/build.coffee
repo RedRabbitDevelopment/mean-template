@@ -75,10 +75,9 @@ module.exports = exports =
   buildIndex: ()->
     # index
     base = files.frontendBuildDir
-    javascriptFiles = files.bower_components.map((component)->
-      "#{base}/lib/#{component}"
-    ).concat ["#{base}/**/*.js"]
-    javascripts = gulp.src javascriptFiles,
+    bowerFiles = files.bower_components.map (component)->
+      "/lib/#{component}"
+    javascripts = gulp.src ["#{base}/**/*.js", "!#{base}/lib/**/*.js"],
       read: false
 
     moduleFile = 'module.js'
@@ -96,6 +95,7 @@ module.exports = exports =
     .pipe rename 'index.html'
     .pipe ejs
       environment: config.server.environment
+      libs: bowerFiles
     .pipe inject javascripts,
       ignorePath: base
       sort: (a, b)->

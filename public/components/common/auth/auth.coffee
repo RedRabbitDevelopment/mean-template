@@ -15,7 +15,8 @@ angular.module('auth')
       .then (user)=>
         @setUser user, config
     login: (data, config)->
-      EZAccess.User.login(data.username, data.password)
+      config = AuthConfig.getConfig config
+      EZAccess.User.login(data[config.authBy], data.password)
       .then (user)=>
         @setUser user, config
     loginWithFacebook: (accessToken, config)->

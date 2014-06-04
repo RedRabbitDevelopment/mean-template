@@ -52,6 +52,7 @@ User.findOne email: 'sumwierdkid@gmail.com'
 .exec().then (user)->
   unless user
     user = new User
+      name: 'Nathan Tate'
       email: 'sumwierdkid@gmail.com'
     Auth.password 'password'
     .then (password)->
