@@ -1,0 +1,9 @@
+
+/bower_components
+/node_modules
+/build
+/public/lib
+config.json
+/index.js
+*.swp
+*.swo
