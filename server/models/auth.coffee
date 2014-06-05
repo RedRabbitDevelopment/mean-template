@@ -15,7 +15,7 @@ module.exports = Auth =
 
   setUser: ->
     if @request.session.userid
-      User.findOne(@request.session.userid)
+      User.findById(@request.session.userid)
       .exec().then (user)=>
         unless user
           delete @request.session.userid
