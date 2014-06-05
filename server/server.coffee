@@ -3,7 +3,9 @@ express = require 'express'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 serveStatic = require 'serve-static'
-session = require 'cookie-session'
+session = require 'express-session'
+MongoSession = require('connect-mongo')(session)
+mongo = require './models/mongo'
 Q = require 'q'
 services = require './models/services'
 app = express()
@@ -14,6 +16,9 @@ app.use cookieParser()
 app.use bodyParser()
 app.use session
   secret: 'replace'
+  store: new MongoSession
+    mongoose_connection: mongo.connections[0]
+
 
 # routes
 frontEnd = new (require('ez-ctrl').FrontEnd)()
