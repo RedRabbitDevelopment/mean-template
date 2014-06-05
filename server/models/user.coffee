@@ -10,7 +10,6 @@ UserSchema = new Schema
 
 UserSchema.methods =
   toJSON: ->
-    console.log @_doc
     doc = @_doc
     delete doc.password
     doc

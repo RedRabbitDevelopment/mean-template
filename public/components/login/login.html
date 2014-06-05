@@ -5,6 +5,7 @@
     <input placeholder="password" ng-model="user.password" type="password" />
     <input type="submit" value="Sign in" />
   </form>
+  <a ui-sref="forgot-password">Forgot your password?</a>
   <button ng-click="autologin()" ng-show="environment !== 'production'">
     Auto Login
   </button>
