@@ -48,15 +48,18 @@ for method in ['ensureLoggedIn', 'ensureAdmin']
   )(method)
   
 # Example user
-User.findOne email: 'sumwierdkid@gmail.com'
-.exec().then (user)->
-  unless user
-    user = new User
-      name: 'Nathan Tate'
-      email: 'sumwierdkid@gmail.com'
-    Auth.password 'password'
-    .then (password)->
-      user.password = password
-      user.save()
-.end()
-
+makeIfNotExists = (name, email, admin)->
+  User.findOne email: email
+  .exec().then (user)->
+    unless user
+      user = new User
+        name: name
+        email: email
+        admin: admin
+      Auth.password 'password'
+      .then (password)->
+        user.password = password
+        user.save()
+  .end()
+makeIfNotExists('Active User', 'activeuser@gmail.com', false)
+makeIfNotExists('Admin User', 'adminuser@gmail.com', true)

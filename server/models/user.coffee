@@ -7,6 +7,7 @@ UserSchema = new Schema
   name: String
   email: String
   password: String
+  is_admin: Boolean
 
 UserSchema.methods =
   toJSON: ->

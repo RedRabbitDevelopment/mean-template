@@ -1,4 +1,4 @@
 
 describe 'server', ->
   it 'should pass', ->
-    throw new Error 'ha'
+    console.log 'booya'

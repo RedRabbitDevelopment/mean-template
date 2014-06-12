@@ -1,5 +1,6 @@
 # Karma configuration
 # Generated on Tue Jun 03 2014 16:39:37 GMT-0600 (MDT)
+files = require './tasks/files'
 
 module.exports = (config) ->
   config.set
@@ -14,13 +15,7 @@ module.exports = (config) ->
 
 
     # list of files / patterns to load in the browser
-    files: [
-      'build/public/lib/jquery/jquery.js'
-      'build/public/lib/angular/angular.js'
-      'public/**/*.coffee'
-      'public/**/*.spec.coffee'
-    ]
-
+    files: files.karmafiles
 
     # list of files to exclude
     exclude: [
@@ -60,7 +55,7 @@ module.exports = (config) ->
 
 
     # enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false
+    autoWatch: true
 
 
     # start these browsers

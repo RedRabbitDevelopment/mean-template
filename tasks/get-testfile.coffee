@@ -6,7 +6,7 @@ fs = require 'fs'
 module.exports = (getBoth)->
   through.obj (file, enc, cb)->
     path = file.path
-    parts = file.split('.')
+    parts = path.split('.')
     # if is script
     if /(coffee|js)/.test parts[parts.length - 1]
       # is test file
@@ -26,7 +26,7 @@ module.exports = (getBoth)->
             newFile = new gutil.File
               base: file.base
               cwd: file.cwd
-              path: testPath
+              path: otherPath
               contents: data
             @push newFile
           cb()

@@ -2,6 +2,7 @@
 gulp = require 'gulp'
 watch = require 'gulp-watch'
 coffee = require 'gulp-coffee'
+karma = require 'gulp-karma'
 newer = require 'gulp-newer'
 print = require 'gulp-print'
 mocha = require 'gulp-mocha'
@@ -16,6 +17,7 @@ es = require 'event-stream'
 getTestFiles = require './get-testfile'
 {buildIndex} = require './build'
 Generator = require './ez-files'
+karmaConfigMethod = require '../karma.conf'
 
 files = require './files'
 
@@ -119,8 +121,16 @@ gulp.task 'tdd', ['build'], ->
         console.log err.stack
       this.emit 'end'
 
-  gulp.src ['public/**/*.coffee']
+  server = require('karma').server
+  server.start
+    configFile: __dirname + '/../karma.conf.coffee'
+    singleRun: false
+    autoWatch: true
+
+  ### doesnt seem to work
+  gulp.src files.karmafiles
   .pipe karma
     configFile: 'karma.conf.coffee'
     action: 'watch'
+  ###
       

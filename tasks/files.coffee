@@ -1,5 +1,5 @@
 
-module.exports =
+module.exports = files =
   frontendDir: 'public'
   backendDir: 'server'
   buildDir: 'build'
@@ -22,4 +22,7 @@ module.exports =
     'ez-access/ez-access-angular.js'
   ]
 
+module.exports.karmafiles = karmafiles = files.bower_components.map (file)->
+  "public/lib/#{file}"
+.concat ['public/**/module.coffee', 'public/**/*.coffee']
 
