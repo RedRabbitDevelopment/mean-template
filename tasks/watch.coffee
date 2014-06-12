@@ -107,7 +107,7 @@ gulp.task 'serve', ['build'], ->
     glob: ['build/**/*', '!build/public/**/*']
   , restartServer
 
-gulp.task 'tdd', ['build'], ->
+gulp.task 'tdd', ['build'], (cb)->
   # backend tests
   gulp.src ['server/**/*']
   .pipe watch (files)->

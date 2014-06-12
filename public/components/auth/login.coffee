@@ -1,5 +1,5 @@
 
-angular.module 'meanTemplate'
+angular.module 'meanTemplate.auth'
 .config ($stateProvider)->
   $stateProvider.state 'login',
     url: '/login'

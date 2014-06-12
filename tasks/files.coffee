@@ -1,5 +1,5 @@
 
-module.exports = files =
+module.exports = exports = files =
   frontendDir: 'public'
   backendDir: 'server'
   buildDir: 'build'
@@ -21,8 +21,15 @@ module.exports = files =
     'ez-access/ez-routes.js'
     'ez-access/ez-access-angular.js'
   ]
+  test_bower_components: [
+    'angular-mocks/angular-mocks.js'
+    'should.js/should.js'
+  ]
 
-module.exports.karmafiles = karmafiles = files.bower_components.map (file)->
+exports.karmafiles = karmafiles = files.bower_components
+.map (file)->
   "public/lib/#{file}"
+.concat files.test_bower_components.map (file)->
+  "bower_components/#{file}"
 .concat ['public/**/module.coffee', 'public/**/*.coffee']
 
